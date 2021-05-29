@@ -1,0 +1,120 @@
+<html lang="en">
+<head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles/animePage.css">
+</head>
+    <body>
+        <%- include("partials/header.ejs") %>
+        <%- include("partials/bootstrap.ejs") %>
+        <div class="anime-list-body">
+            <h2 class="title-description"><strong>Top Manga</strong> (Page <%= page%>)</h2>
+            <div class="anime-list">
+                <% topMangas.forEach(manga => {%>
+                    <article class="anime-card">
+                        <button type="button" class="modal-button" data-bs-toggle="modal"
+                                data-bs-target="#animedetails-<%= manga.mal_id %>">
+                            <div class="figure-outer-block">
+                                <img class="image-inner-block" src="<%= manga.image_url %>" alt="Anime Image" />
+                            </div>
+                            <h3 class="anime-card-title"><%= manga.title %></h3>
+                        </button>
+                    </article>
+                <%})%>
+            </div>
+
+            <% topMangas.forEach(manga => { %>
+            <div class="modal fade bd-example-modal-lg" id="animedetails-<%=manga.mal_id%>" tabindex="-1" aria-labelledby="Anime description" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><%= manga.title %></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body-inline-block ">
+                            <div class="modal-body row">
+                                <figure class="modal-body col-xl-4">
+                                    <img src="<%= manga.image_url %>" class="modal-image" alt="<%= manga.title %> Image" />
+                                </figure>
+                                <figure class="modal-body col-xl-8">
+                                    <h3><strong>Type: </strong><%= manga.type %></h3>
+                                    <%if (manga.type === "Manga") {%>
+                                        <%if(manga.volumes === null){ %>
+                                            <h3><strong>Volumes: </strong>TBA</h3>
+                                        <%} else {%>
+                                            <h3><strong>Volumes: </strong><%= manga.volumes %></h3>
+                                        <%}%>
+                                    <%}%>
+                                    <h3>
+                                        <strong>Rank: </strong>
+                                        <%= manga.rank %>
+                                    </h3>
+                                    <h3>
+                                        <strong>Score: </strong>
+                                        <%if(manga.score === 0){%>
+                                            Not scored yet.
+                                        <%} else {%>
+                                        <%=manga.score%>/10
+                                        <%}%>
+                                    </h3>
+                                    <h3>
+                                        <strong>Start Date: </strong>
+                                        <%if(manga.start_date === null){%>
+                                            TBA
+                                        <%} else {%>
+                                            <%= manga.start_date.substring(0,10)%>
+                                        <%}%>
+                                    </h3>
+                                    <h3>
+                                        <strong>End Date: </strong>
+                                        <%if(manga.airing){%>
+                                            Still Airing
+                                        <%} else {%>
+                                        <%if(manga.end_date === null){%>
+                                            TBA
+                                        <%} else {%>
+                                            <%= manga.end_date.substring(0,10)%>
+                                        <%}%>
+                                        <%}%>
+                                    </h3>
+                                    <h6><a href="<%=manga.url%>" target="_blank">Click here for more details.</a></h6>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+
+
+        <nav aria-label="...">
+            <div class="pagination-entire">
+                <ul class="pagination pagination-lg justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="/topmangas/1">First</a>
+                    </li>
+                    <%if(page === 1){%>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="/topmangas/<%= page %>" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+                    <%} else{%>
+                        <li class="page-item ">
+                            <a class="page-link" href="/topmangas/<%= page - 1 %>" aria-disabled="true">Previous</a>
+                        </li>
+                    <%}%>
+
+                    <% for(var i = page; i<=page+4; i++){%>
+                        <li class="page-item">
+                            <a class="page-link" href="/topmangas/<%= i %>"><%= i %></a>
+                        </li>
+                    <%}%>
+                    <li class="page-item ">
+                        <a class="page-link" href="/topmangas/<%= page + 1 %>" aria-disabled="true">Next</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+    </body>
+</html>

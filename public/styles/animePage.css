@@ -68,6 +68,10 @@
   margin: 32px -8px 0px;
 }
 
+.pagination-entire {
+  padding: 2rem;
+}
+
 .anime-list-body {
   overflow-x: hidden;
   padding-left: 3rem;
