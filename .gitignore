@@ -105,3 +105,6 @@ dist
 
 #.idea files
 .idea/
+
+#nightwatchjs
+tests_output/
