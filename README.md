@@ -10,7 +10,7 @@ First, you need to have Node installed. Go ahead and download Node first so that
 
 Once you've installed Node, then what you want to do is find a directory in your computer where you want to download this repository. <br/> <br/> 
 
-Once you've figured that out, open the terminal and navigate to that specific folder. If you're on windows, you can alternatively navigate to the folder where you want to download it and do `ctrl + right click` then click `open with terminal` or `open with git Bash`. Either works, we just need to have a terminal that navigates to where you want to download the repo. <br/> <br/> 
+Once you've figured that out, open the terminal and navigate to that specific folder. If you're on windows, you can alternatively navigate to the folder where you want to download it and do `ctrl + right click` then click `open with terminal` or `open with git Bash` (On windows). Either works, we just need to have a terminal that navigates to where you want to download the repo. <br/> <br/> 
 
 Once you're there, you need to clone the repository. Look up any guides on how to clone a repository. Then once you've cloned it, `cd` into the repository name, in this case it's `anime-list`. <br/> <br/>
 
