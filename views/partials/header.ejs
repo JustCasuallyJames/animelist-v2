@@ -40,7 +40,6 @@
         input.addEventListener("submit", (e) => {
         	e.preventDefault()
             if(inputData.value.length > 2){
-				console.log(inputData.value)
 				window.location.assign(`${window.location.origin}/anime/${inputData.value}/1`)
 			}else{
             	alert(`We need a little bit more than ${inputData.value.length} ${inputData.value.length === 1 ? "character": "characters"} to search up an anime.`)

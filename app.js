@@ -78,7 +78,6 @@ app.get("/anime/:anime/:page", async (req, res) => {
 			.then(res => res.json())
 			.then(data => data.results) //not top because the array is called results
 
-		console.log(animeResults)
 		res.render('searchAnime', {animeResults: animeResults, page: page, search: query})
 	}catch(e){
 		// console.log("Inside the /anime/:anime/:page");
