@@ -21,15 +21,29 @@
             <a href="/topmangas/1" class="nav-elements">Top Manga</a>
             <a href="/topupcominganime/1" class="nav-elements">Top Upcoming Anime</a>
 
-<!--            <form-->
-<!--                    onSubmit="form-submission">-->
-<!--                <input-->
-<!--                        type="search"-->
-<!--                        placeholder="Search for an anime..."-->
-<!--                        spellcheck="false"-->
-<!--                        id="searchBar"-->
-<!--                />-->
-<!--            </form>-->
+            <form
+                    class="search-form"
+                    target="_self"
+                    id="searchBar"
+                    autocomplete="off">
+                <input
+                        autocomplete="false"
+                        type="search"
+                        class="search-input-value"
+                        placeholder="Search for an anime..."
+                        spellcheck="false"
+                        id="searchInput"
+                />
+            </form>
         </nav>
+    <script>
+        let input = document.getElementById("searchBar")
+        input.addEventListener("submit", (e) => {
+        	e.preventDefault()
+            window.location.assign(`${window.location.origin}/anime/${inputData.value}/1`)
+			console.log(inputData.value)
+        })
+        let inputData = document.getElementById("searchInput")
+    </script>
     </body>
 </html>

@@ -160,16 +160,13 @@
   padding: 0px 16px;
 }
 
-.main-head {
+.search-form {
   display: flex;
   justify-content: center;
-}
-.main-head .search-box {
-  display: flex;
-  justify-content: center;
+  padding: 2rem;
   flex: 1 1 0%;
 }
-.main-head .search-box input {
+.search-form .search-input-value {
   appearance: none;
   background: none;
   outline: none;
@@ -182,12 +179,22 @@
   background-color: #EEE;
   transition: 0.4s;
 }
-.main-head .search-box input ::placeholder {
+.search-form .search-input-value ::placeholder {
   color: #888;
 }
-.main-head .search-box input:focus, .main-head .search-box input:valid {
+.search-form .search-input-value:focus, .search-form .search-input-value:valid {
   background-color: #313131;
   color: #FFF;
+}
+
+.main-head {
+  display: flex;
+  justify-content: center;
+}
+.main-head .search-box {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 0%;
 }
 
 /*# sourceMappingURL=animePage.css.map */
