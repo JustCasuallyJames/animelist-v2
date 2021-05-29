@@ -1,21 +1,20 @@
 const express = require('express');
 const fetch = require('node-fetch');
+const path = require('path')
 const port = 3000;
 const anime_url = "https://api.jikan.moe/v3";
 
 //express app
 const app = express();
 
+//static files
+app.use(express.static('public'))
+app.use('/styles', express.static(path.join(__dirname, 'public')))
+// console.log(__dirname + '/public')
+
 //register view engine (ejs)
 app.set('views', './views');
 app.set('view engine', 'ejs');
-
-//static files
-app.use(express.static('public'))
-app.use('/styles', express.static(__dirname + 'public/styles'))
-
-//listens for requests
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 app.get('/', async (req, res) => {
 	const topAnimes = await fetch(`${anime_url}/top/anime/1/tv`)
@@ -46,4 +45,6 @@ app.get("/anime/:anime/:page", async (req, res) => {
 	res.render('animePage', {animeResults})
 })
 
+//listens for requests
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 

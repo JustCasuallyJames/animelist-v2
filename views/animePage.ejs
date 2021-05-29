@@ -1,19 +1,30 @@
+<!DOCTYPE html>
 <html lang="en">
-    <body>
-        <% animeResults.forEach(anime => {%>
-            <article className="anime-card">
-                <button type="button" className="modal-button" data-bs-toggle="modal"
-                        data-bs-target="#animedetails-<%=anime.mal_id%>">
-                    <figure className="figure-outer-block">
-                        <img className="image-inner-block" src="<%= anime.image_url %>" alt="Anime Image" />
-                    </figure>
-                    <h3 className="anime-card-title"><%= anime.title %></h3>
-                </button>
-            </article>
-        <%})%>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Anime Database</title>
+        <!--    This is the boostrap css-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        <% animeResults.forEach(anime => { %>
-            <div class="modal fade bd-example-modal-lg" id="animedetails-<%= anime.mal_id %>" tabindex="-1" aria-labelledby="Anime description" aria-hidden="true">
+        <link rel="stylesheet" href="/styles/animePage.css">
+    </head>
+    <!--    This is the boostrap scripts-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <body>
+
+        <div>
+            <% animeResults.forEach(anime => { %>
+            <div class="modal fade bd-example-modal-lg" id="animedetails-<%=anime.mal_id%>" tabindex="-1" aria-labelledby="Anime description" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -21,18 +32,18 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body-inline-block ">
-                            <div className="modal-body row">
-                                <figure className="modal-body col-xl-4">
-                                    <img src="<%= anime.image_url %>" className="modal-image" alt="<%= anime.title %> Image" />
+                            <div class="modal-body row">
+                                <figure class="modal-body col-xl-4">
+                                    <img src="<%= anime.image_url %>" class="modal-image" alt="<%= anime.title %> Image" />
                                 </figure>
-                                <figure className="modal-body col-xl-8">
+                                <figure class="modal-body col-xl-8">
                                     <h3><strong>Type: </strong><%= anime.type %></h3>
                                     <%if (anime.type === "TV") {%>
-                                        <%if(anime.episodes === null){ %>
-                                            <h3><strong>Episodes: </strong>TBA</h3>
-                                        <%} else {%>
-                                            <h3><strong>Episodes: </strong><%= anime.episodes %></h3>
-                                        <%}%>
+                                    <%if(anime.episodes === null){ %>
+                                        <h3><strong>Episodes: </strong>TBA</h3>
+                                    <%} else {%>
+                                        <h3><strong>Episodes: </strong><%= anime.episodes %></h3>
+                                    <%}%>
                                     <%} else {%>
 
                                     <%}%>
@@ -80,13 +91,23 @@
                     </div>
                 </div>
             </div>
-        <% }) %>
-    <script>
-        <% animeResults.forEach(anime => { %>
-		    document.getElementById("<%= anime.mal_id %>").innerHTML
-        <%})%>
+            <% }) %>
 
-    </script>
+            <div class="anime-list">
+                <% animeResults.forEach(anime => {%>
+                <article class="anime-card">
+                    <button type="button" class="modal-button" data-bs-toggle="modal"
+                            data-bs-target="#animedetails-<%= anime.mal_id %>" onclick= <% console.log("This is the button being clicked")%>>
+                        <div class="figure-outer-block">
+                            <img class="image-inner-block" src="<%= anime.image_url %>" alt="Anime Image" />
+                        </div>
+                        <h3 class="anime-card-title"><%= anime.title %></h3>
+                    </button>
+                </article>
+                <%})%>
+            </div>
+
+        </div>
+
     </body>
 </html>
-
