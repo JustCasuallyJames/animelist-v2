@@ -1,48 +1,3 @@
-.content-wrap {
-    display: flex;
-
-    aside {
-        flex: 1 1 250px;
-        max-width: 250px;
-        padding-right: 16px;
-
-        nav {
-            padding-left: 16px;
-            padding-right: 16px;
-
-            h3 {
-                color: #313131;
-                font-size: 24px;
-                margin-bottom: 16px;
-                font-family: "Lucida Console", sans-serif;
-            }
-
-            a {
-                display: block;
-                padding: 8px 16px;
-                text-align: left;
-
-                color: #888;
-                font-size: 16px;
-                margin-bottom: 16px;
-
-                background-color: #EEE;
-                border-radius: 999px;
-                text-decoration: none;
-
-                transition: 0.4s;
-
-                font-family: "Gill Sans", sans-serif;
-
-                &:hover {
-                    background-color: #313131;
-                    color: #AAA;
-                }
-            }
-        }
-    }
-
-}
 
 //this is for the title of the anime database
 .full-title-header{
@@ -72,18 +27,40 @@
             color: #15bccf //kind of like aqua
         }
     }
-}
+    .search-form{
+        display: flex;
+        justify-content: center;
+        padding: 2rem;
+        flex: 1 1 0%;
+
+        .search-input-value {
+            appearance: none;
+            background: none;
+            outline: none;
+            border: none;
+
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border-radius: 999px;
+            max-width: 400px;
+            background-color: #EEE;
 
 
-//this is specifically for manga
-.top-manga-page{
-    flex: 1 1 0%;
-    padding: 0px 16px;
+            ::placeholder {
+                color: #888888;
+            }
 
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 32px;
-    margin: 32px -8px 0px;
+            &:focus, &:valid {
+                background-color: #313131;
+                color: #FFFFFF;
+
+                //&:hover{
+                //    color: #FFFFFF;
+                //}
+            }
+        }
+    }
 }
 
 .pagination-entire{
@@ -183,64 +160,42 @@
     }
 }
 
-
-.homepage-cards{
-    flex: 1 1 0%;
-    padding: 0px 16px;
-
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 32px;
-    margin: 32px -8px 0px;
-
-    .main-page {
-        flex: 1 1 0%;
-        padding: 0px 16px;
-    }
+//this is for the fade in text
+.fade-in-text {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 70px;
+    text-align: center;
+    padding:30px;
+    color: black;
+    animation: fadeIn linear 4s;
+    -webkit-animation: fadeIn linear 4s;
+    -moz-animation: fadeIn linear 4s;
+    -o-animation: fadeIn linear 4s;
+    -ms-animation: fadeIn linear 4s;
 }
 
-.search-form{
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-    flex: 1 1 0%;
-    .search-input-value {
-        appearance: none;
-        background: none;
-        outline: none;
-        border: none;
-
-        display: block;
-        width: 100%;
-        max-width: 400px;
-        padding: 16px;
-        border-radius: 999px;
-        background-color: #EEE;
-
-        transition: 0.4s;
-
-        ::placeholder {
-            color: #888;
-        }
-
-        &:focus, &:valid {
-            background-color: #313131;
-            color: #FFF;
-        }
-    }
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 
-
-.main-head {
-    display: flex;
-    justify-content: center;
-
-    .search-box {
-        display: flex;
-        justify-content: center;
-        flex: 1 1 0%;
-
-
-    }
+@-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}

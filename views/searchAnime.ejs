@@ -57,6 +57,14 @@
                                     <%}%>
                                 </h3>
                                 <h3>
+                                    <strong>Synopsis: </strong>
+                                    <%if(anime.synopsis === null){%>
+                                        Click the link below for the synopsis.
+                                    <%} else {%>
+                                        <%= anime.synopsis %>
+                                    <%}%>
+                                </h3>
+                                <h3>
                                     <strong>Start Date: </strong>
                                     <%if(anime.start_date === null){%>
                                         TBA
