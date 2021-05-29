@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <!-- CSS -->
-
+    <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="/styles/animePage.css">
 </head>
 <body>
@@ -39,16 +39,12 @@
                             <figure class="modal-body col-xl-8">
                                 <h3><strong>Type: </strong><%= anime.type %></h3>
                                 <%if (anime.type === "TV") {%>
-                                <%if(anime.episodes === null){ %>
-                                    <h3><strong>Episodes: </strong>TBA</h3>
-                                <%} else {%>
-                                    <h3><strong>Episodes: </strong><%= anime.episodes %></h3>
+                                    <%if(anime.airing === true){ %>
+                                        <h3><strong>Episodes: </strong>Still Airing</h3>
+                                    <%} else {%>
+                                        <h3><strong>Episodes: </strong><%= anime.episodes %></h3>
+                                    <%}%>
                                 <%}%>
-                                <%}%>
-                                <h3>
-                                    <strong>Rank: </strong>
-                                    <%= anime.rank %>
-                                </h3>
                                 <h3>
                                     <strong>Score: </strong>
                                     <%if(anime.score === 0){%>
@@ -58,10 +54,10 @@
                                     <%}%>
                                 </h3>
                                 <h3>
-                                    <strong>Synopsis: </strong>
-                                    <%if(anime.synopsis === null){%>
-                                        Click the link below for the synopsis.
+                                    <%if(anime.synopsis.length === 0 ){%>
+
                                     <%} else {%>
+                                        <strong>Synopsis: </strong>
                                         <%= anime.synopsis %>
                                     <%}%>
                                 </h3>
