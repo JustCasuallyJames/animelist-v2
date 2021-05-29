@@ -1,101 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Anime Database</title>
-        <!--    This is the boostrap css-->
-
         <link rel="stylesheet" href="/styles/animePage.css">
     </head>
 
     <body>
-        <%- include("partials/bootstrap.ejs")%>
-        <div>
-            <% animeResults.forEach(anime => { %>
-            <div class="modal fade bd-example-modal-lg" id="animedetails-<%=anime.mal_id%>" tabindex="-1" aria-labelledby="Anime description" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><%= anime.title %></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body-inline-block ">
-                            <div class="modal-body row">
-                                <figure class="modal-body col-xl-4">
-                                    <img src="<%= anime.image_url %>" class="modal-image" alt="<%= anime.title %> Image" />
-                                </figure>
-                                <figure class="modal-body col-xl-8">
-                                    <h3><strong>Type: </strong><%= anime.type %></h3>
-                                    <%if (anime.type === "TV") {%>
-                                    <%if(anime.episodes === null){ %>
-                                        <h3><strong>Episodes: </strong>TBA</h3>
-                                    <%} else {%>
-                                        <h3><strong>Episodes: </strong><%= anime.episodes %></h3>
-                                    <%}%>
-                                    <%} else {%>
+        <%- include("partials/header.ejs") %>
+        <%- include("partials/bootstrap.ejs") %>
+        <div class="anime-list-body">
 
-                                    <%}%>
-                                    <h3>
-                                        <strong>Score: </strong>
-                                        <%if(anime.score === 0){%>
-                                            Not scored yet.
-                                        <%} else {%>
-                                        <%=anime.score%>/10
+            <div class="anime-list">
+                <% animeResults.forEach(anime => {%>
+                    <article class="anime-card">
+                        <button type="button" class="modal-button" data-bs-toggle="modal"
+                                data-bs-target="#animedetails-<%= anime.mal_id %>">
+                            <div class="figure-outer-block">
+                                <img class="image-inner-block" src="<%= anime.image_url %>" alt="Anime Image" />
+                            </div>
+                            <h3 class="anime-card-title"><%= anime.title %></h3>
+                        </button>
+                    </article>
+                <%})%>
+            </div>
+
+            <% animeResults.forEach(anime => { %>
+                <div class="modal fade bd-example-modal-lg" id="animedetails-<%=anime.mal_id%>" tabindex="-1" aria-labelledby="Anime description" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"><%= anime.title %></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body-inline-block ">
+                                <div class="modal-body row">
+                                    <figure class="modal-body col-xl-4">
+                                        <img src="<%= anime.image_url %>" class="modal-image" alt="<%= anime.title %> Image" />
+                                    </figure>
+                                    <figure class="modal-body col-xl-8">
+                                        <h3><strong>Type: </strong><%= anime.type %></h3>
+                                        <%if (anime.type === "TV") {%>
+                                            <%if(anime.episodes === null){ %>
+                                                <h3><strong>Episodes: </strong>TBA</h3>
+                                            <%} else {%>
+                                                <h3><strong>Episodes: </strong><%= anime.episodes %></h3>
+                                            <%}%>
                                         <%}%>
-                                    </h3>
-                                    <h3>
-                                        <strong>Synopsis: </strong>
-                                        <%if(anime.synopsis === null){%>
-                                            Click the link below for the synopsis.
-                                        <%} else {%>
-                                            <%= anime.synopsis %>
-                                        <%}%>
-                                    </h3>
-                                    <h3>
-                                        <strong>Start Date: </strong>
-                                        <%if(anime.start_date === null){%>
-                                            TBA
-                                        <%} else {%>
-                                            <%= anime.start_date.substring(0,10)%>
-                                        <%}%>
-                                    </h3>
-                                    <h3>
-                                        <strong>End Date: </strong>
-                                        <%if(anime.airing){%>
-                                            Still Airing
-                                        <%} else {%>
-                                        <%if(anime.end_date === null){%>
-                                            TBA
-                                        <%} else {%>
-                                            <%= anime.end_date.substring(0,10)%>
-                                        <%}%>
-                                        <%}%>
-                                        {
-                                    </h3>
-                                    <h6><a href="<%=anime.url%>" target="_blank">Click here for more details.</a></h6>
-                                </figure>
+                                        <h3>
+                                            <strong>Score: </strong>
+                                            <%if(anime.score === 0){%>
+                                                Not scored yet.
+                                            <%} else {%>
+                                            <%=anime.score%>/10
+                                            <%}%>
+                                        </h3>
+                                        <h3>
+                                            <strong>Synopsis: </strong>
+                                            <%if(anime.synopsis === null){%>
+                                                Click the link below for the synopsis.
+                                            <%} else {%>
+                                                <%= anime.synopsis %>
+                                            <%}%>
+                                        </h3>
+                                        <h3>
+                                            <strong>Start Date: </strong>
+                                            <%if(anime.start_date === null){%>
+                                                TBA
+                                            <%} else {%>
+                                                <%= anime.start_date.substring(0,10)%>
+                                            <%}%>
+                                        </h3>
+                                        <h3>
+                                            <strong>End Date: </strong>
+                                            <%if(anime.airing){%>
+                                                Still Airing
+                                            <%} else {%>
+                                                <%if(anime.end_date === null){%>
+                                                    TBA
+                                                <%} else {%>
+                                                    <%= anime.end_date.substring(0,10)%>
+                                                <%}%>
+                                            <%}%>
+                                        </h3>
+                                        <h6><a href="<%=anime.url%>" target="_blank">Click here for more details.</a></h6>
+                                    </figure>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             <% }) %>
-
-            <div class="anime-list">
-                <% animeResults.forEach(anime => {%>
-                <article class="anime-card">
-                    <button type="button" class="modal-button" data-bs-toggle="modal"
-                            data-bs-target="#animedetails-<%= anime.mal_id %>">
-                        <div class="figure-outer-block">
-                            <img class="image-inner-block" src="<%= anime.image_url %>" alt="Anime Image" />
-                        </div>
-                        <h3 class="anime-card-title"><%= anime.title %></h3>
-                    </button>
-                </article>
-                <%})%>
-            </div>
-
         </div>
     </body>
 </html>

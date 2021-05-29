@@ -34,8 +34,29 @@
   color: #AAA;
 }
 
-.testing {
-  font-size: 120px;
+.full-title-header {
+  text-align: center;
+}
+.full-title-header .full-title {
+  font-size: 70px;
+  text-decoration: none;
+  color: black;
+}
+.full-title-header .full-title:hover {
+  color: black;
+}
+
+.nav-entire {
+  text-align: center;
+}
+.nav-entire .nav-elements {
+  font-size: 30px;
+  padding: 25px;
+  text-decoration: none;
+  color: black;
+}
+.nav-entire .nav-elements:hover {
+  color: #15bccf;
 }
 
 .top-manga-page {
@@ -47,18 +68,26 @@
   margin: 32px -8px 0px;
 }
 
-.anime-list {
+.anime-list-body {
+  overflow-x: hidden;
+  padding-left: 3rem;
+}
+.anime-list-body .title-description {
+  font-size: 50px;
+  margin: 1.5rem;
+}
+.anime-list-body .anime-list {
   display: flex;
   flex-wrap: wrap;
   margin-top: 32px;
   margin: 32px -8px 0px;
 }
-.anime-list .anime-card {
+.anime-list-body .anime-list .anime-card {
   flex: 1 1 33.33333%;
   max-width: 33.33333%;
   padding: 16px 8px;
 }
-.anime-list .anime-card .modal-button {
+.anime-list-body .anime-list .anime-card .modal-button {
   background-color: Transparent;
   background-repeat: no-repeat;
   border: none;
@@ -67,16 +96,16 @@
   outline: none;
   width: 90%;
 }
-.anime-list .anime-card a {
+.anime-list-body .anime-list .anime-card a {
   text-decoration: none;
 }
-.anime-list .anime-card .figure-outer-block {
+.anime-list-body .anime-list .anime-card .figure-outer-block {
   display: block;
   margin-bottom: 16px;
   padding: 2rem;
   padding-bottom: 0.7rem;
 }
-.anime-list .anime-card .figure-outer-block .image-inner-block {
+.anime-list-body .anime-list .anime-card .figure-outer-block .image-inner-block {
   display: block;
   width: 100%;
   height: 600px;
@@ -85,18 +114,18 @@
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
   transition: 0.4s;
 }
-.anime-list .anime-card .anime-card-title {
+.anime-list-body .anime-list .anime-card .anime-card-title {
   color: #313131;
   text-align: center;
 }
-.anime-list .anime-card:hover .figure-outer-block .image-inner-block {
+.anime-list-body .anime-list .anime-card:hover .figure-outer-block .image-inner-block {
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
   transform: scale(1.05);
 }
-.anime-list .anime-card .modal-entire-body {
+.anime-list-body .anime-list .anime-card .modal-entire-body {
   display: inline-block;
 }
-.anime-list .anime-card .modal-entire-body img {
+.anime-list-body .anime-list .anime-card .modal-entire-body img {
   display: inline-block;
   vertical-align: middle;
   width: 100%;
@@ -107,10 +136,10 @@
   padding: 1rem;
   outline: black;
 }
-.anime-list .anime-card .modal-entire-body h2 {
+.anime-list-body .anime-list .anime-card .modal-entire-body h2 {
   display: inline-block;
 }
-.anime-list .anime-card .modal-entire-body h3 {
+.anime-list-body .anime-list .anime-card .modal-entire-body h3 {
   display: inline-block;
 }
 
