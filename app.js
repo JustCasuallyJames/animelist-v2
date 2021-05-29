@@ -37,10 +37,19 @@ app.get('/topmangas/:page', async (req, res) => {
 	const page = parseInt(req.params.page);
 	const topMangas = await fetch(`${anime_url}/top/manga/${page}/manga`)
 		.then(res => res.json())
-		.then(data => data.top) //This is grabs the first ten datas
+		.then(data => data.top) //this grabs all the data
 
 	console.log(topMangas);
 	res.render('topManga', {topMangas: topMangas, page: page})
+});
+
+app.get('/topupcominganime/:page', async (req, res) => {
+	const page = parseInt(req.params.page);
+	const topUpcomingAnime = await fetch(`${anime_url}/top/anime/${page}/upcoming`)
+		.then(res => res.json())
+		.then(data => data.top) //This grabs all the data
+
+	res.render('topUpcomingAnime', {topUpcomingAnime: topUpcomingAnime, page: page})
 });
 
 //obtains the top results data for the anime
