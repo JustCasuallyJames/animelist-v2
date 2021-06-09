@@ -1,52 +1,41 @@
 
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Anime Database</title>
-        <link rel="shortcut icon" href="#">
+<link rel="stylesheet" href="/styles/animePage.css">
 
-        <link rel="stylesheet" href="/styles/animePage.css">
+<h1 class="full-title-header">
+    <a href="/" class="full-title">
+        <strong>Anime</strong>Database
+    </a>
+</h1>
 
-    </head>
-    <body>
-        <h1 class="full-title-header">
-            <a href="/" class="full-title">
-                <strong>Anime</strong>Database
-            </a>
-        </h1>
+<nav class="nav-entire">
+    <a href="/topanimes/1" class="nav-elements">Top Anime</a>
+    <a href="/topmangas/1" class="nav-elements">Top Manga</a>
+    <a href="/topupcominganime/1" class="nav-elements">Top Upcoming Anime</a>
 
-        <nav class="nav-entire">
-            <a href="/topanimes/1" class="nav-elements">Top Anime</a>
-            <a href="/topmangas/1" class="nav-elements">Top Manga</a>
-            <a href="/topupcominganime/1" class="nav-elements">Top Upcoming Anime</a>
+    <form
+            class="search-form"
+            target="_self"
+            id="searchBar"
+            autocomplete="off">
+        <input
+                type="search"
+                class="search-input-value"
+                placeholder="Search for an anime..."
+                spellcheck="false"
+                id="searchInput"
+        />
+    </form>
+</nav>
+<script>
+    let input = document.getElementById("searchBar")
+    input.addEventListener("submit", (e) => {
+        e.preventDefault()
+        if(inputData.value.length > 2){
+            window.location.assign(`${window.location.origin}/anime/${inputData.value}/1`)
+        }else{
+            alert(`We need a little bit more than ${inputData.value.length} ${inputData.value.length === 1 ? "character": "characters"} to search up an anime.`)
+        }
 
-            <form
-                    class="search-form"
-                    target="_self"
-                    id="searchBar"
-                    autocomplete="off">
-                <input
-                        type="search"
-                        class="search-input-value"
-                        placeholder="Search for an anime..."
-                        spellcheck="false"
-                        id="searchInput"
-                />
-            </form>
-        </nav>
-    <script>
-        let input = document.getElementById("searchBar")
-        input.addEventListener("submit", (e) => {
-        	e.preventDefault()
-            if(inputData.value.length > 2){
-				window.location.assign(`${window.location.origin}/anime/${inputData.value}/1`)
-			}else{
-            	alert(`We need a little bit more than ${inputData.value.length} ${inputData.value.length === 1 ? "character": "characters"} to search up an anime.`)
-            }
-
-        })
-        let inputData = document.getElementById("searchInput")
-    </script>
-    </body>
-</html>
+    })
+    let inputData = document.getElementById("searchInput")
+</script>
